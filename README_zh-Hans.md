@@ -4,7 +4,7 @@
 
 ## LibDriver HMC5883L
 
-[English](/README.md) | [ 简体中文](/README_CH.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
 
 霍尼韦尔HMC5883L是一种设计用于低磁场感应的表面贴装芯片模块。它带有数字接口，用于低成本罗盘和磁强计等应用。HMC5883L使用了最先进的高分辨率HMC118X系列磁阻传感器，该传感器包含放大、自动消磁、偏移消除，支持1° 到2° 罗盘航向精度12位ADC等特性。HMC5883L是一种3.0x3.0x0.9mm表面安装16针无铅芯片载体（LCC）。HMC5883L的应用包括移动电话、上网本、消费电子产品、自动导航系统和个人导航设备。
 
@@ -139,7 +139,7 @@ return 0;
 
 ### 版权
 
-版权(C) LibDriver 2015-2021 版权所有
+版权 (c) 2015 - 现在 LibDriver 版权所有
 
 MIT 许可证（MIT）
 
