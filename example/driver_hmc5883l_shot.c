@@ -48,7 +48,7 @@ static hmc5883l_handle_t gs_handle;        /**< hmc5883l handle */
  */
 uint8_t hmc5883l_shot_init(void)
 {
-     volatile uint8_t res;
+     uint8_t res;
     
     /* link interface function */
     DRIVER_HMC5883L_LINK_INIT(&gs_handle, hmc5883l_handle_t);
@@ -61,7 +61,7 @@ uint8_t hmc5883l_shot_init(void)
     
     /* hmc5883l init */
     res = hmc5883l_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: init failed.\n");
         
@@ -70,50 +70,50 @@ uint8_t hmc5883l_shot_init(void)
     
     /* set average sample */
     res = hmc5883l_set_average_sample(&gs_handle, HMC5883L_SHOT_DEFAULT_AVERAGE_SAMPLE);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set data output rate */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_SHOT_DEFAULT_DATA_OUTPUT_RATE);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set mode */
     res = hmc5883l_set_mode(&gs_handle, HMC5883L_SHOT_DEFAULT_MODE);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set gain */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_SHOT_DEFAULT_GAIN);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set enable high speed iic */
     res = hmc5883l_enable_high_speed_iic(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: enable high speed iic failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -131,10 +131,10 @@ uint8_t hmc5883l_shot_init(void)
  */
 uint8_t hmc5883l_shot_read(float m_gauss[3])
 {
-    volatile int16_t raw[3];
+    int16_t raw[3];
     
     /* read x,y,z data */
-    if (hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss))
+    if (hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss) != 0)
     {
         return 1;
     }
@@ -154,7 +154,7 @@ uint8_t hmc5883l_shot_read(float m_gauss[3])
 uint8_t hmc5883l_shot_deinit(void)
 {
     /* close hmc5883l */
-    if (hmc5883l_deinit(&gs_handle))
+    if (hmc5883l_deinit(&gs_handle) != 0)
     {
         return 1;
     }

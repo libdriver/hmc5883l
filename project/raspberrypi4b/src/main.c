@@ -114,7 +114,7 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
             if (strcmp("reg", argv[2]) == 0)
             {
                 /* run reg test */
-                if (hmc5883l_register_test())
+                if (hmc5883l_register_test() != 0)
                 {
                     return 1;
                 }
@@ -144,7 +144,7 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
             if (strcmp("read", argv[2]) == 0)
             {
                 /* run read test */
-                if (hmc5883l_read_test(atoi(argv[3])))
+                if (hmc5883l_read_test(atoi(argv[3])) != 0)
                 {
                     return 1;
                 }
@@ -165,13 +165,13 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
              /* read function */
             if (strcmp("read", argv[2]) == 0)
             {
-                volatile uint8_t res;
-                volatile uint32_t times;
-                volatile uint32_t i;
-                volatile float m_gauss[3];
+                uint8_t res;
+                uint32_t times;
+                uint32_t i;
+                float m_gauss[3];
                 
                 res = hmc5883l_basic_init();
-                if (res)
+                if (res != 0)
                 {
                     return 1;
                 }
@@ -180,9 +180,9 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
                 {
                     hmc5883l_interface_delay_ms(1000);
                     res = hmc5883l_basic_read((float *)m_gauss);
-                    if (res)
+                    if (res != 0)
                     {
-                        hmc5883l_basic_deinit();
+                        (void)hmc5883l_basic_deinit();
                         
                         return 1;
                     }
@@ -191,21 +191,21 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
                     hmc5883l_interface_debug_print("hmc5883l: y is %0.3f.\n", m_gauss[1]);
                     hmc5883l_interface_debug_print("hmc5883l: z is %0.3f.\n", m_gauss[2]);
                 }
-                hmc5883l_basic_deinit();
+                (void)hmc5883l_basic_deinit();
                 
                 return 0;
             }
             /* shot function */
             else if (strcmp("shot", argv[2]) == 0)
             {
-                volatile uint8_t res;
-                volatile uint32_t times;
-                volatile uint32_t i;
-                volatile float m_gauss[3];
+                uint8_t res;
+                uint32_t times;
+                uint32_t i;
+                float m_gauss[3];
                 
                 times = atoi(argv[3]);
                 res = hmc5883l_shot_init();
-                if (res)
+                if (res != 0)
                 {
                     return 1;
                 }
@@ -213,9 +213,9 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
                 {
                     hmc5883l_interface_delay_ms(1000);
                     res = hmc5883l_shot_read((float *)m_gauss);
-                    if (res)
+                    if (res != 0)
                     {
-                        hmc5883l_shot_deinit();
+                        (void)hmc5883l_shot_deinit();
                         
                         return 1;
                     }
@@ -224,7 +224,7 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
                     hmc5883l_interface_debug_print("hmc5883l: y is %0.3f.\n", m_gauss[1]);
                     hmc5883l_interface_debug_print("hmc5883l: z is %0.3f.\n", m_gauss[2]);
                 }
-                hmc5883l_shot_deinit();
+                (void)hmc5883l_shot_deinit();
                 
                 return 0;
                 

@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_HMC5883L_READ_TEST_H_
-#define _DRIVER_HMC5883L_READ_TEST_H_
+#ifndef DRIVER_HMC5883L_READ_TEST_H
+#define DRIVER_HMC5883L_READ_TEST_H
 
 #include "driver_hmc5883l_interface.h"
 
