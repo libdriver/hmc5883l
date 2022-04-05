@@ -13,7 +13,7 @@ var NAVTREEINDEX1 =
 "structhmc5883l__handle__s.html":[0,0,1,0],
 "structhmc5883l__handle__s.html#a19bedf28d2b9748f6a62d9ae93f4e68f":[0,0,1,0,6],
 "structhmc5883l__handle__s.html#a406c9433252b7366de417b7a60915c81":[0,0,1,0,1],
-"structhmc5883l__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2":[0,0,1,0,0],
+"structhmc5883l__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b":[0,0,1,0,0],
 "structhmc5883l__handle__s.html#a8826dd07625f8d90859ce9bd09628d61":[0,0,1,0,3],
 "structhmc5883l__handle__s.html#adca3ee7a793bbf510d5267daf0fcf1c5":[0,0,1,0,5],
 "structhmc5883l__handle__s.html#af4ef726288b88f51a846483803a1249b":[0,0,1,0,4],

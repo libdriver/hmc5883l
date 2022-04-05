@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['debug_5fprint_2',['debug_print',['../structhmc5883l__handle__s.html#a75f9f50c23e87e9407f9ec4e34bb42f2',1,'hmc5883l_handle_s']]],
+  ['debug_5fprint_2',['debug_print',['../structhmc5883l__handle__s.html#a769d5b3a6c14790a0e126e8fe70b384b',1,'hmc5883l_handle_s']]],
   ['delay_5fms_3',['delay_ms',['../structhmc5883l__handle__s.html#a406c9433252b7366de417b7a60915c81',1,'hmc5883l_handle_s']]],
   ['driver_5fhmc5883l_2ec_4',['driver_hmc5883l.c',['../driver__hmc5883l_8c.html',1,'']]],
   ['driver_5fhmc5883l_2eh_5',['driver_hmc5883l.h',['../driver__hmc5883l_8h.html',1,'']]],

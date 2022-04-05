@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_HMC5883L_BASIC_H_
-#define _DRIVER_HMC5883L_BASIC_H_
+#ifndef DRIVER_HMC5883L_BASIC_H
+#define DRIVER_HMC5883L_BASIC_H
 
 #include "driver_hmc5883l_interface.h"
 

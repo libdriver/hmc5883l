@@ -79,28 +79,28 @@
  *            - 1 test failed
  * @note      none
  */
-static uint8_t _hmc5883l_test(hmc5883l_handle_t *handle)
+static uint8_t a_hmc5883l_test(hmc5883l_handle_t *handle)
 {
-    volatile uint8_t reg ,times, status;
-    volatile uint8_t buf[6];
-    volatile int16_t data;
+    uint8_t reg, times, status;
+    uint8_t buf[6];
+    int16_t data;
     
     reg = 0x71;                                                                             /* set 0x71 */
-    if (handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&reg, 1))            /* write cra reg */
+    if (handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&reg, 1) != 0)       /* write cra reg */
     {
         handle->debug_print("hmc5883l: write failed.\n");                                   /* write cra failed */
       
         return 1;                                                                           /* return error */
     }
     reg = 0xA0;                                                                             /* set 0xA0 */
-    if (handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_CRB, (uint8_t *)&reg, 1))            /* write crb reg */
+    if (handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_CRB, (uint8_t *)&reg, 1) != 0)       /* write crb reg */
     {
         handle->debug_print("hmc5883l: write failed.\n");                                   /* write crb failed */
         
         return 1;                                                                           /* return error */
     }
     reg = 0x00;                                                                             /* set 0x00 */
-    if (handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&reg, 1))           /* write mode reg */
+    if (handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&reg, 1) != 0)      /* write mode reg */
     {
         handle->debug_print("hmc5883l: write failed.\n");                                   /* write mode failed */
         
@@ -109,20 +109,24 @@ static uint8_t _hmc5883l_test(hmc5883l_handle_t *handle)
     handle->delay_ms(100);                                                                  /* wait 100 ms */
     times = 15;                                                                             /* set try 15 times */
     
-    start:
-    
-    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_STATUS, (uint8_t *)&status, 1))       /* read status */
+    while (times != 0)                                                                      /* check the times */
     {
-        handle->debug_print("hmc5883l: read failed.\n");                                    /* read status failed */
-        
-        return 1;                                                                           /* return errror */
-    }
-    status = status & 0x01;                                                                 /* get status bit */
-    if ((status == 0) && (times != 0))                                                      /* check status */
-    {
-        times--;                                                                            /* times-- */
-
-        goto start;                                                                         /* restart */
+        if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_STATUS, 
+                            (uint8_t *)&status, 1) != 0)                                    /* read status */
+        {
+            handle->debug_print("hmc5883l: read failed.\n");                                /* read status failed */
+            
+            return 1;                                                                       /* return errror */
+        }
+        status = status & 0x01;                                                             /* get status bit */
+        if (status == 0)                                                                    /* check status */
+        {
+            times--;                                                                        /* times-- */
+        }
+        else
+        {
+            break;                                                                          /* break */
+        }
     }
     if (times == 0)                                                                         /* if timeout */
     {
@@ -130,27 +134,27 @@ static uint8_t _hmc5883l_test(hmc5883l_handle_t *handle)
         
         return 1;                                                                           /* return error */
     }
-    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_OUTXM, (uint8_t *)buf, 6))            /* read raw data */
+    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_OUTXM, (uint8_t *)buf, 6) != 0)       /* read raw data */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                    /* read failed */
         
         return 1;                                                                           /* return error */
     }
-    data = (int16_t)(buf[0] << 8) | buf[1];                                                 /* get x data */
+    data = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);                                     /* get x data */
     if ((data <= 243) || (data > 575))                                                      /* check x data */
     {
         handle->debug_print("hmc5883l: x check failed.\n");                                 /* x data check failed */
         
         return 1;                                                                           /* return error */
     }
-    data = (int16_t)(buf[2] << 8) | buf[3];                                                 /* get y data */
+    data = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                     /* get y data */
     if ((data <= 243) || (data > 575))                                                      /* check y data */
     {
         handle->debug_print("hmc5883l: y check failed.\n");                                 /* y data check failed */
         
         return 1;                                                                           /* return error */
     }
-    data = (int16_t)(buf[4] << 8) | buf[5];                                                 /* get z data */
+    data = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                     /* get z data */
     if ((data <= 243) || (data > 575))                                                      /* check z data */
     {
         handle->debug_print("hmc5883l: z check failed.\n");                                 /* z data check failed */
@@ -173,7 +177,7 @@ static uint8_t _hmc5883l_test(hmc5883l_handle_t *handle)
  */
 uint8_t hmc5883l_init(hmc5883l_handle_t *handle)
 {
-    volatile uint8_t id;
+    uint8_t id;
     
     if (handle == NULL)                                                               /* check handle */
     {
@@ -214,58 +218,58 @@ uint8_t hmc5883l_init(hmc5883l_handle_t *handle)
         return 3;                                                                     /* return error */
     }
     
-    if (handle->iic_init())                                                           /* iic init */
+    if (handle->iic_init() != 0)                                                      /* iic init */
     {
         handle->debug_print("hmc5883l: iic init failed.\n");                          /* iic init failed */
         
         return 1;                                                                     /* return error */
     }
-    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_IDA, (uint8_t *)&id, 1))        /* read ida failed */
+    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_IDA, (uint8_t *)&id, 1) != 0)   /* read ida failed */
     {
         handle->debug_print("hmc5883l: read failed.\n");                              /* read failed */
-        handle->iic_deinit();                                                         /* iic deinit */
+        (void)handle->iic_deinit();                                                   /* iic deinit */
         
         return 1;                                                                     /* return error */
     }
     if (id != 'H')                                                                    /* check id a */
     {
         handle->debug_print("hmc5883l: first id invalid.\n");                         /* first id is invalid */
-        handle->iic_deinit();                                                         /* iic deinit */
+        (void)handle->iic_deinit();                                                   /* iic deinit */
         
         return 1;                                                                     /* return error */
     }
-    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_IDB, (uint8_t *)&id, 1))        /* read idb failed */
+    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_IDB, (uint8_t *)&id, 1) != 0)   /* read idb failed */
     {
         handle->debug_print("hmc5883l: read failed.\n");                              /* read failed */
-        handle->iic_deinit();                                                         /* iic deinit */
+        (void)handle->iic_deinit();                                                   /* iic deinit */
         
         return 1;                                                                     /* return error */
     }
     if (id != '4')                                                                    /* check id b */
     {
         handle->debug_print("hmc5883l: second id invalid.\n");                        /* second id is invalid */
-        handle->iic_deinit();                                                         /* iid deinit */
+        (void)handle->iic_deinit();                                                   /* iid deinit */
         
         return 1;                                                                     /* return error */
     }    
-    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_IDC, (uint8_t *)&id, 1))        /* read idc */
+    if (handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_IDC, (uint8_t *)&id, 1) != 0)   /* read idc */
     {
         handle->debug_print("hmc5883l: read failed.\n");                              /* read idc failed */
-        handle->iic_deinit();                                                         /* iic deinit */
+        (void)handle->iic_deinit();                                                   /* iic deinit */
         
         return 1;                                                                     /* return error */
     }
     if (id != '3')                                                                    /* check id c */
     {
         handle->debug_print("hmc5883l: third id invalid.\n");                         /* third id is invalid */
-        handle->iic_deinit();                                                         /* iic deinit */
+        (void)handle->iic_deinit();                                                   /* iic deinit */
         
         return 1;                                                                     /* return error */
     }    
-    if (_hmc5883l_test(handle))                                                       /* run test */
+    if (a_hmc5883l_test(handle) != 0)                                                 /* run test */
     {
         handle->debug_print("hmc5883l: test is not passed.\n");                       /* run test failed */
-        handle->iic_deinit();                                                         /* iic deinit */
+        (void)handle->iic_deinit();                                                   /* iic deinit */
         
         return 1;                                                                     /* return error */
     }
@@ -287,7 +291,7 @@ uint8_t hmc5883l_init(hmc5883l_handle_t *handle)
  */
 uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                     /* check handle */
     {
@@ -299,7 +303,7 @@ uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
     }
 
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);         /* read mode config */
-    if (res)                                                                                /* check result */
+    if (res != 0)                                                                           /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                    /* read mode reg */
         
@@ -309,13 +313,13 @@ uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
     prev &= ~(0x03);                                                                        /* clear config */
     prev |= 0x02;                                                                           /* set config */
     res = handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);        /* write mode config */
-    if (res)                                                                                /* check result */
+    if (res != 0)                                                                           /* check result */
     {
         handle->debug_print("hmc5883l: write failed.\n");                                   /* write mode failed */
         
         return 1;                                                                           /* return error */
     }    
-    if (handle->iic_deinit())                                                               /* iic deinit */
+    if (handle->iic_deinit() != 0)                                                          /* iic deinit */
     {
         handle->debug_print("hmc5883l: iic deinit failed.\n");                              /* return error */
         
@@ -339,7 +343,7 @@ uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
  */
 uint8_t hmc5883l_set_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_sample_t average_sample)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                     /* check handle */
     {
@@ -351,7 +355,7 @@ uint8_t hmc5883l_set_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&prev, 1);          /* read cra config */
-    if (res)                                                                                /* check result */
+    if (res != 0)                                                                           /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                    /* read cra failed */
         
@@ -377,7 +381,7 @@ uint8_t hmc5883l_set_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_
  */
 uint8_t hmc5883l_get_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_sample_t *average_sample)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                   /* check handle */
     {
@@ -389,7 +393,7 @@ uint8_t hmc5883l_get_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&prev, 1);        /* read cra config */
-    if (res)                                                                              /* check result */
+    if (res != 0)                                                                         /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                  /* return cra failed */
         
@@ -414,7 +418,7 @@ uint8_t hmc5883l_get_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_
  */
 uint8_t hmc5883l_set_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_output_rate_t data_rate)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                     /* check handle */
     {
@@ -426,7 +430,7 @@ uint8_t hmc5883l_set_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_o
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&prev, 1);          /* read cra config */
-    if (res)                                                                                /* check result */
+    if (res != 0)                                                                           /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                    /* read cra failed */
         
@@ -452,7 +456,7 @@ uint8_t hmc5883l_set_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_o
  */
 uint8_t hmc5883l_get_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_output_rate_t *data_rate)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                   /* check handle */
     {
@@ -464,7 +468,7 @@ uint8_t hmc5883l_get_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_o
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&prev, 1);        /* read cra config */
-    if (res)                                                                              /* check result */
+    if (res != 0)                                                                         /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                  /* read cra failed */
         
@@ -489,7 +493,7 @@ uint8_t hmc5883l_get_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_o
  */
 uint8_t hmc5883l_set_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t mode)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                     /* check handle */
     {
@@ -501,7 +505,7 @@ uint8_t hmc5883l_set_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t mode)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&prev, 1);          /* read cra config */
-    if (res)                                                                                /* check result */
+    if (res != 0)                                                                           /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                    /* read cra failed */
         
@@ -527,7 +531,7 @@ uint8_t hmc5883l_set_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t mode)
  */
 uint8_t hmc5883l_get_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t *mode)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                   /* check handle */
     {
@@ -539,7 +543,7 @@ uint8_t hmc5883l_get_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t *mode)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRA, (uint8_t *)&prev, 1);        /* read cra config */
-    if (res)                                                                              /* check result */
+    if (res != 0)                                                                         /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                  /* read cra failed */
         
@@ -564,7 +568,7 @@ uint8_t hmc5883l_get_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t *mode)
  */
 uint8_t hmc5883l_set_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t gain)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                   /* check handle */
     {
@@ -576,7 +580,7 @@ uint8_t hmc5883l_set_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t gain)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRB, (uint8_t *)&prev, 1);        /* read config */
-    if (res)                                                                              /* check result */
+    if (res != 0)                                                                         /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                  /* read crb config failed */
         
@@ -602,7 +606,7 @@ uint8_t hmc5883l_set_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t gain)
  */
 uint8_t hmc5883l_get_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t *gain)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                   /* check handle */
     {
@@ -614,7 +618,7 @@ uint8_t hmc5883l_get_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t *gain)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRB, (uint8_t *)&prev, 1);        /* read config */
-    if (res)                                                                              /* check result */
+    if (res != 0)                                                                         /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                  /* read crb config failed */
         
@@ -638,7 +642,7 @@ uint8_t hmc5883l_get_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t *gain)
  */
 uint8_t hmc5883l_enable_high_speed_iic(hmc5883l_handle_t *handle)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -650,7 +654,7 @@ uint8_t hmc5883l_enable_high_speed_iic(hmc5883l_handle_t *handle)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);          /* read mode config */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                     /* read mode failed */
         
@@ -674,7 +678,7 @@ uint8_t hmc5883l_enable_high_speed_iic(hmc5883l_handle_t *handle)
  */
 uint8_t hmc5883l_disable_high_speed_iic(hmc5883l_handle_t *handle)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -686,7 +690,7 @@ uint8_t hmc5883l_disable_high_speed_iic(hmc5883l_handle_t *handle)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);          /* read mode config */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                     /* read mode faild */
         
@@ -712,10 +716,10 @@ uint8_t hmc5883l_disable_high_speed_iic(hmc5883l_handle_t *handle)
  */
 uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_gauss[3])
 {
-    volatile uint8_t res, gain, status, prev;
-    volatile uint16_t num = 5000;
-    volatile uint8_t buf[6];
-    volatile float resolution;
+    uint8_t res, gain, status, prev;
+    uint16_t num = 5000;
+    uint8_t buf[6];
+    float resolution;
     
     if (handle == NULL)                                                                           /* check handle */
     {
@@ -727,7 +731,7 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);               /* read mode register */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                          /* read mode failed */
         
@@ -737,14 +741,14 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
     prev &= ~(0x03);                                                                              /* clear config */
     prev |= 0x01;                                                                                 /* set config */
     res = handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);              /* write mode regsiter */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("hmc5883l: write failed.\n");                                         /* write mode failed */
         
         return 1;                                                                                 /* return error */
     }
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRB, (uint8_t *)&gain, 1);                /* read crb register */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                          /* read crb failed */
         
@@ -801,17 +805,23 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
             
             break;                                                                                /* break */
         }
+        default :                                                                                 /* unknow code */
+        {
+            resolution = 0.00f;                                                                   /* set resolution 0.00 */
+            
+            break;                                                                                /* break */
+        }
     }
-    while (num)                                                                                   /* check num */
+    while (num != 0)                                                                              /* check num */
     {
         res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_STATUS, (uint8_t *)&status, 1);       /* read status register */
-        if (res)                                                                                  /* check result */
+        if (res != 0)                                                                             /* check result */
         {
             handle->debug_print("hmc5883l: read failed.\n");                                      /* read status failed */
             
             return 1;                                                                             /* return error */
         }
-        if (status & 0x01)                                                                        /* check status */
+        if ((status & 0x01) != 0)                                                                 /* check status */
         {
             break;                                                                                /* break loop */
         }
@@ -825,15 +835,15 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
         }
     }
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_OUTXM, (uint8_t *)buf, 6);                /* read raw data */
-    if (res)                                                                                      /* check result */
+    if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                          /* read out failed */
         
         return 1;                                                                                 /* return error */
     }
-    raw[0] = (int16_t)((int16_t)(buf[0] << 8) | buf[1]);                                          /* get x raw */
-    raw[1] = (int16_t)((int16_t)(buf[2] << 8) | buf[3]);                                          /* get y raw */
-    raw[2] = (int16_t)((int16_t)(buf[4] << 8) | buf[5]);                                          /* get z raw */
+    raw[0] = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);                                         /* get x raw */
+    raw[1] = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                         /* get y raw */
+    raw[2] = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                         /* get z raw */
     m_gauss[0] = (float)(raw[0]) * resolution;                                                    /* calculate x */
     m_gauss[1] = (float)(raw[1]) * resolution;                                                    /* calculate y */
     m_gauss[2] = (float)(raw[2]) * resolution;                                                    /* calculate z */
@@ -853,7 +863,7 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
  */
 uint8_t hmc5883l_start_continuous_read(hmc5883l_handle_t *handle)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -865,7 +875,7 @@ uint8_t hmc5883l_start_continuous_read(hmc5883l_handle_t *handle)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);          /* read mode register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                     /* read mode failed */
         
@@ -889,7 +899,7 @@ uint8_t hmc5883l_start_continuous_read(hmc5883l_handle_t *handle)
  */
 uint8_t hmc5883l_stop_continuous_read(hmc5883l_handle_t *handle)
 {
-    volatile uint8_t res, prev;
+    uint8_t res, prev;
     
     if (handle == NULL)                                                                      /* check handle */
     {
@@ -901,7 +911,7 @@ uint8_t hmc5883l_stop_continuous_read(hmc5883l_handle_t *handle)
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);          /* read mode register */
-    if (res)                                                                                 /* check result */
+    if (res != 0)                                                                            /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                     /* read mode failed */
         
@@ -928,10 +938,10 @@ uint8_t hmc5883l_stop_continuous_read(hmc5883l_handle_t *handle)
  */
 uint8_t hmc5883l_continuous_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_gauss[3])
 {
-    volatile uint8_t res, gain, status;
-    volatile uint16_t num = 5000;
-    volatile uint8_t buf[6];
-    volatile float resolution;
+    uint8_t res, gain, status;
+    uint16_t num = 5000;
+    uint8_t buf[6];
+    float resolution;
     
     if (handle == NULL)                                                                            /* check handle */
     {
@@ -943,7 +953,7 @@ uint8_t hmc5883l_continuous_read(hmc5883l_handle_t *handle, int16_t raw[3], floa
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_CRB, (uint8_t *)&gain, 1);                 /* read crb register failed */
-    if (res)                                                                                       /* check result */
+    if (res != 0)                                                                                  /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                           /* read crb failed */
         
@@ -1000,17 +1010,23 @@ uint8_t hmc5883l_continuous_read(hmc5883l_handle_t *handle, int16_t raw[3], floa
             
             break;                                                                                 /* break */
         }
+        default :                                                                                  /* unknow code */
+        {
+            resolution = 0.00f;                                                                    /* set resolution 0.00 */
+            
+            break;                                                                                 /* break */
+        }
     }
-    while (num)                                                                                    /* check num */
+    while (num != 0)                                                                               /* check num */
     {
         res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_STATUS, (uint8_t *)&status, 1);        /* read status register */
-        if (res)                                                                                   /* check result */
+        if (res != 0)                                                                              /* check result */
         {
             handle->debug_print("hmc5883l: read failed.\n");                                       /* read status failed */
             
             return 1;                                                                              /* return error */
         }
-        if (status & 0x01)                                                                         /* check status */
+        if ((status & 0x01) != 0)                                                                  /* check status */
         {
             break;                                                                                 /* break loop */
         }
@@ -1024,15 +1040,15 @@ uint8_t hmc5883l_continuous_read(hmc5883l_handle_t *handle, int16_t raw[3], floa
         }
     }
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_OUTXM, (uint8_t *)buf, 6);                 /* read raw data */
-    if (res)                                                                                       /* check result */
+    if (res != 0)                                                                                  /* check result */
     {
         handle->debug_print("hmc5883l: read failed.\n");                                           /* read out failed */
         
         return 1;                                                                                  /* return error */
     }
-    raw[0] = (int16_t)((int16_t)(buf[0] << 8) | buf[1]);                                           /* get x raw */
-    raw[1] = (int16_t)((int16_t)(buf[2] << 8) | buf[3]);                                           /* get y raw */
-    raw[2] = (int16_t)((int16_t)(buf[4] << 8) | buf[5]);                                           /* get z raw */
+    raw[0] = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);                                          /* get x raw */
+    raw[1] = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                          /* get y raw */
+    raw[2] = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                          /* get z raw */
     m_gauss[0] = (float)(raw[0]) * resolution;                                                     /* calculate x */
     m_gauss[1] = (float)(raw[1]) * resolution;                                                     /* calculate y */
     m_gauss[2] = (float)(raw[2]) * resolution;                                                     /* calculate z */

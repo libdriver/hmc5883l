@@ -35,8 +35,8 @@
  * </table>
  */
 
-#ifndef _DRIVER_HMC5883L_INTERFACE_H_
-#define _DRIVER_HMC5883L_INTERFACE_H_
+#ifndef DRIVER_HMC5883L_INTERFACE_H
+#define DRIVER_HMC5883L_INTERFACE_H
 
 #include "driver_hmc5883l.h"
 
@@ -105,10 +105,9 @@ void hmc5883l_interface_delay_ms(uint32_t ms);
 /**
  * @brief     interface print format data
  * @param[in] fmt is the format data
- * @return    length of the send data
  * @note      none
  */
-uint16_t hmc5883l_interface_debug_print(char *fmt, ...);
+void hmc5883l_interface_debug_print(const char *const fmt, ...);
 
 /**
  * @}

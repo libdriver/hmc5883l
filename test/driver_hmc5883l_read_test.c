@@ -49,9 +49,9 @@ static hmc5883l_handle_t gs_handle;        /**< hmc5883l handle */
  */
 uint8_t hmc5883l_read_test(uint32_t times)
 {
-    volatile uint8_t res; 
-    volatile uint8_t i;
-    volatile int16_t raw[3];
+    uint8_t res; 
+    uint8_t i;
+    int16_t raw[3];
     float m_gauss[3];
     hmc5883l_info_t info;
     
@@ -66,7 +66,7 @@ uint8_t hmc5883l_read_test(uint32_t times)
     
     /* get hmc5883l info */
     res = hmc5883l_info(&info);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get info failed.\n");
         
@@ -88,7 +88,7 @@ uint8_t hmc5883l_read_test(uint32_t times)
     
     /* hmc5883l init */
     res = hmc5883l_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: init failed.\n");
        
@@ -97,50 +97,50 @@ uint8_t hmc5883l_read_test(uint32_t times)
     
     /* set average sample 8 */
     res = hmc5883l_set_average_sample(&gs_handle, HMC5883L_AVERAGE_SAMPLE_8);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set 75 data output rate */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_75);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set normal mode */
     res = hmc5883l_set_mode(&gs_handle, HMC5883L_MODE_NORMAL);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     
     /* set 820 gain */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_820);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }    
     
     /* enable high speed iic */
     res = hmc5883l_enable_high_speed_iic(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: enable high speed iic failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -157,10 +157,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
     
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -176,10 +176,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* start continuous read */
     res = hmc5883l_start_continuous_read(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: start continuous read failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -190,10 +190,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_continuous_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: continuous read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -206,10 +206,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* stop continuous read */
     res = hmc5883l_stop_continuous_read(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: stop continuous read failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -219,10 +219,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 1370 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_1370);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -234,10 +234,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -250,10 +250,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 1090 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_1090);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -265,10 +265,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -281,10 +281,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 820 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_820);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -296,10 +296,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -312,10 +312,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 660 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_660);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -327,10 +327,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -343,10 +343,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 440 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_440);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -358,10 +358,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -374,10 +374,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 390 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_390);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }        
@@ -389,10 +389,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -405,10 +405,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 330 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_330);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -420,10 +420,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -436,10 +436,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* set gain 230 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_230);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -451,10 +451,10 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
         /* single read */
         res = hmc5883l_single_read(&gs_handle, (int16_t *)raw, m_gauss);
-        if (res)
+        if (res != 0)
         {
             hmc5883l_interface_debug_print("hmc5883l: single read failed.\n");
-            hmc5883l_deinit(&gs_handle);
+            (void)hmc5883l_deinit(&gs_handle);
             
             return 1;
         }
@@ -467,7 +467,7 @@ uint8_t hmc5883l_read_test(uint32_t times)
 
     /* finish read test */
     hmc5883l_interface_debug_print("hmc5883l: finished read test.\n");
-    hmc5883l_deinit(&gs_handle);
+    (void)hmc5883l_deinit(&gs_handle);
     
     return 0;
 }

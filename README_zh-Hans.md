@@ -1,4 +1,4 @@
-[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md)
+[English](/README.md) | [ 简体中文](/README_zh-Hans.md) | [繁體中文](/README_zh-Hant.md) | [日本語](/README_ja.md) | [Deutsch](/README_de.md) | [한국어](/README_ko.md)
 
 <div align=center>
 <img src="/doc/image/logo.png"/>
@@ -6,11 +6,11 @@
 
 ## LibDriver HMC5883L
 
-[![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 霍尼韦尔HMC5883L是一种设计用于低磁场感应的表面贴装芯片模块。它带有数字接口，用于低成本罗盘和磁强计等应用。HMC5883L使用了最先进的高分辨率HMC118X系列磁阻传感器，该传感器包含放大、自动消磁、偏移消除，支持1° 到2° 罗盘航向精度12位ADC等特性。HMC5883L是一种3.0x3.0x0.9mm表面安装16针无铅芯片载体（LCC）。HMC5883L的应用包括移动电话、上网本、消费电子产品、自动导航系统和个人导航设备。
 
-LibDriver HMC5883L是LibDriver推出的HMC5883L的全功能驱动，该驱动提供连续模式磁场强度读取、单次模式磁场读取等功能。
+LibDriver HMC5883L是LibDriver推出的HMC5883L的全功能驱动，该驱动提供连续模式磁场强度读取、单次模式磁场读取等功能并且它符合MISRA标准。
 
 ### 目录
 

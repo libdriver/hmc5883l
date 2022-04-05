@@ -48,7 +48,7 @@ static hmc5883l_handle_t gs_handle;        /**< hmc5883l handle */
  */
 uint8_t hmc5883l_register_test(void)
 {
-    volatile uint8_t res; 
+    uint8_t res; 
     hmc5883l_info_t info;
     hmc5883l_average_sample_t average_sample;
     hmc5883l_data_output_rate_t data_rate;
@@ -66,7 +66,7 @@ uint8_t hmc5883l_register_test(void)
     
     /* get hmc5883l info */
     res = hmc5883l_info(&info);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get info failed.\n");
         
@@ -88,7 +88,7 @@ uint8_t hmc5883l_register_test(void)
     
     /* hmc5883l init */
     res = hmc5883l_init(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: init failed.\n");
        
@@ -103,19 +103,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set AVERAGE_SAMPLE_1 */
     res = hmc5883l_set_average_sample(&gs_handle, HMC5883L_AVERAGE_SAMPLE_1);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set average sample 1.\n");
     res = hmc5883l_get_average_sample(&gs_handle, &average_sample);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -123,19 +123,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set AVERAGE_SAMPLE_2 */
     res = hmc5883l_set_average_sample(&gs_handle, HMC5883L_AVERAGE_SAMPLE_2);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }    
     hmc5883l_interface_debug_print("hmc5883l: set average sample 2.\n");
     res = hmc5883l_get_average_sample(&gs_handle, &average_sample);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -143,19 +143,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set AVERAGE_SAMPLE_4 */
     res = hmc5883l_set_average_sample(&gs_handle, HMC5883L_AVERAGE_SAMPLE_4);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set average sample 4.\n");
     res = hmc5883l_get_average_sample(&gs_handle, &average_sample);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -163,19 +163,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set AVERAGE_SAMPLE_8 */
     res = hmc5883l_set_average_sample(&gs_handle, HMC5883L_AVERAGE_SAMPLE_8);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set average sample 8.\n");
     res = hmc5883l_get_average_sample(&gs_handle, &average_sample);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get average sample failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -186,19 +186,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set DATA_OUTPUT_RATE_0P75 */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_0P75);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set data output rate 0.75.\n");
     res = hmc5883l_get_data_output_rate(&gs_handle, &data_rate);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -206,19 +206,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set DATA_OUTPUT_RATE_1P5 */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_1P5);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set data output rate 1.5.\n");
     res = hmc5883l_get_data_output_rate(&gs_handle, &data_rate);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -226,19 +226,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set DATA_OUTPUT_RATE_3 */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_3);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set data output rate 3.\n");
     res = hmc5883l_get_data_output_rate(&gs_handle, &data_rate);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -246,19 +246,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set DATA_OUTPUT_RATE_7.5 */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_7P5);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set data output rate 7.5.\n");
     res = hmc5883l_get_data_output_rate(&gs_handle, &data_rate);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -266,19 +266,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set DATA_OUTPUT_RATE_15 */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_15);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set data output rate 15.\n");
     res = hmc5883l_get_data_output_rate(&gs_handle, &data_rate);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -286,19 +286,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set DATA_OUTPUT_RATE_30 */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_30);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set data output rate 30.\n");
     res = hmc5883l_get_data_output_rate(&gs_handle, &data_rate);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -306,19 +306,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set DATA_OUTPUT_RATE_75 */
     res = hmc5883l_set_data_output_rate(&gs_handle, HMC5883L_DATA_OUTPUT_RATE_75);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set data output rate 75.\n");
     res = hmc5883l_get_data_output_rate(&gs_handle, &data_rate);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get data output rate failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -329,19 +329,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set NORMAL */
     res = hmc5883l_set_mode(&gs_handle, HMC5883L_MODE_NORMAL);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set mode normal.\n");
     res = hmc5883l_get_mode(&gs_handle, &mode);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -349,19 +349,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set POSITIVE_BIAS */
     res = hmc5883l_set_mode(&gs_handle, HMC5883L_MODE_POSITIVE_BIAS);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set mode positive bias.\n");
     res = hmc5883l_get_mode(&gs_handle, &mode);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -369,19 +369,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set NEGATIVE_BIAS */
     res = hmc5883l_set_mode(&gs_handle, HMC5883L_MODE_NEGATIVE_BIAS);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set mode negative bias.\n");
     res = hmc5883l_get_mode(&gs_handle, &mode);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get mode failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -392,19 +392,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_1370 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_1370);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set gain 1370.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -412,19 +412,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_1090 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_1090);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set gain 1090.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -432,19 +432,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_820 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_820);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set gain 820.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -452,19 +452,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_660 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_660);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set gain 660.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -472,19 +472,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_440 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_440);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set gain 440.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -492,19 +492,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_390 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_390);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set gain 390.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -512,19 +512,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_330 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_330);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
     hmc5883l_interface_debug_print("hmc5883l: set gain 330.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -532,19 +532,19 @@ uint8_t hmc5883l_register_test(void)
     
     /* set GAIN_330 */
     res = hmc5883l_set_gain(&gs_handle, HMC5883L_GAIN_230);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: set gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }    
     hmc5883l_interface_debug_print("hmc5883l: set gain 230.\n");
     res = hmc5883l_get_gain(&gs_handle, &gain);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: get gain failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -553,10 +553,10 @@ uint8_t hmc5883l_register_test(void)
     /* hmc5883l_enable_high_speed_iic */
     hmc5883l_interface_debug_print("hmc5883l: hmc5883l_enable_high_speed_iic.\n");
     res = hmc5883l_enable_high_speed_iic(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: enable high speed iic failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -565,10 +565,10 @@ uint8_t hmc5883l_register_test(void)
     /* hmc5883l_disable_high_speed_iic */
     hmc5883l_interface_debug_print("hmc5883l: hmc5883l_disable_high_speed_iic.\n");
     res = hmc5883l_disable_high_speed_iic(&gs_handle);
-    if (res)
+    if (res != 0)
     {
         hmc5883l_interface_debug_print("hmc5883l: disable high speed iic failed.\n");
-        hmc5883l_deinit(&gs_handle);
+        (void)hmc5883l_deinit(&gs_handle);
         
         return 1;
     }
@@ -576,7 +576,7 @@ uint8_t hmc5883l_register_test(void)
     
     /* finished register test */
     hmc5883l_interface_debug_print("hmc5883l: finished register test.\n");
-    hmc5883l_deinit(&gs_handle);
+    (void)hmc5883l_deinit(&gs_handle);
     
     return 0;
 }
