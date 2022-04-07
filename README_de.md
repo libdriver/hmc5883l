@@ -5,7 +5,7 @@
 </div>
 
 ## LibDriver HMC5883L
-[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/ws2812b/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE) 
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE) 
 
 Das HMC5883L von Honeywell ist ein oberflächenmontierbares Multi-Chip-Modul, das für die magnetische Niederfeld-Erfassung mit einer digitalen Schnittstelle für Anwendungen wie kostengünstige Kompassmessung und Magnetometrie entwickelt wurde.Das HMC5883L enthält unsere hochmoderne, hochauflösende Magnetoresistive Sensoren der HMC118X-Serie sowie ein ASIC mit Verstärkung, automatischen Entmagnetisierungsbandtreibern, Offset-Unterdrückung und einem 12-Bit-ADC, der eine Kompasskursgenauigkeit von 1° bis 2° ermöglicht.Der serielle I2C-Bus ermöglicht eine einfache Schnittstelle.Der HMC5883L ist ein 3,0 x 3,0 x 0,9 mm oberflächenmontierbarer 16-poliger bleifreier Chipträger (LCC) Zu den Anwendungen für den HMC5883L gehören Mobiltelefone, Netbooks, Unterhaltungselektronik, automatische Navigationssysteme und persönliche Navigationsgeräte.
 
