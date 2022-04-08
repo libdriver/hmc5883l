@@ -6,7 +6,7 @@
 
 ## LibDriver HMC5883L
 
-[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 Honeywell HMC5883Lは、低磁場検知用に設計された表面実装チップモジュールです。 低コストのコンパスや磁力計などのアプリケーション用のデジタルインターフェースが付属しています。 HMC5883Lは、最先端の高解像度HMC118Xシリーズ磁気抵抗センサーを使用します。センサーには、増幅、自動消磁、オフセットキャンセル、1°から2°のコンパス方位精度12ビットADCおよびその他の機能が含まれます。 HMC5883Lは、3.0x3.0x0.9mmの表面実装16ピンリードフリーチップキャリア（LCC）です。 HMC5883Lのアプリケーションには、携帯電話、ネットブック、家庭用電化製品、自動ナビゲーションシステム、およびパーソナルナビゲーションデバイスが含まれます。
 

@@ -6,7 +6,7 @@
 
 ## LibDriver HMC5883L
 
-[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
+[![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
 Honeywell HMC5883L은 저비용 나침반 및 자기 측정과 같은 애플리케이션을 위한 디지털 인터페이스가 있는 저장 자기 감지용으로 설계된 표면 실장 다중 칩 모듈입니다. HMC118X 시리즈 자기 저항 센서와 증폭, 자동 소거 스트랩 드라이버, 오프셋 제거 및 1° ~ 2°의 나침반 방향 정확도를 가능하게 하는 12비트 ADC를 포함하는 ASIC I2C 직렬 버스를 통해 인터페이스가 간편합니다. HMC5883L은 3.0x3.0x0.9mm 표면 실장 16핀 무연 칩 캐리어(LCC) HMC5883L의 애플리케이션에는 휴대전화, 넷북, 가전제품, 자동 내비게이션 시스템 및 개인용 내비게이션 장치가 포함됩니다.
 
