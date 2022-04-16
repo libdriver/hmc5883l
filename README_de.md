@@ -55,7 +55,7 @@ uint8_t i;
 float m_gauss[3];
 
 res = hmc5883l_basic_init();
-if (res)
+if (res != 0)
 {
     return 1;
 }
@@ -67,9 +67,9 @@ for (i = 0; i < 3; i++)
 {
     hmc5883l_interface_delay_ms(1000);
     res = hmc5883l_basic_read((float *)m_gauss);
-    if (res)
+    if (res != 0)
     {
-        hmc5883l_basic_deinit();
+        (void)hmc5883l_basic_deinit();
 
         return 1;
     }
@@ -83,7 +83,7 @@ for (i = 0; i < 3; i++)
 
 ...
 
-hmc5883l_basic_deinit();
+(void)hmc5883l_basic_deinit();
 
 return 0;
 ```
@@ -96,7 +96,7 @@ uint8_t i;
 float m_gauss[3];
 
 res = hmc5883l_shot_init();
-if (res)
+if (res != 0)
 {
     return 1;
 }
@@ -107,9 +107,9 @@ for (i = 0; i < 3; i++)
 {
     hmc5883l_interface_delay_ms(1000);
     res = hmc5883l_shot_read((float *)m_gauss);
-    if (res)
+    if (res != 0)
     {
-        hmc5883l_shot_deinit();
+        (void)hmc5883l_shot_deinit();
 
         return 1;
     }
@@ -123,7 +123,7 @@ for (i = 0; i < 3; i++)
 
 ...
 
-hmc5883l_shot_deinit();
+(void)hmc5883l_shot_deinit();
 
 return 0;
 ```
