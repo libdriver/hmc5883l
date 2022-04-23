@@ -169,8 +169,6 @@ uint8_t hmc5883l_basic_deinit(void)
     res = hmc5883l_stop_continuous_read(&gs_handle);
     if (res != 0)
     {
-        hmc5883l_interface_debug_print("hmc5883l: stop continuous read failed.\n");
-        
         return 1;
     }
     
