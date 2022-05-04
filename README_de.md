@@ -27,15 +27,15 @@ LibDriver HMC5883L ist der Treiber mit vollem Funktionsumfang von HMC5883L, der 
 
 /src enthält LibDriver HMC5883L-Quelldateien.
 
-/interface enthält die plattformunabhängige Vorlage LibDriver HMC5883L IIC。
+/interface enthält die plattformunabhängige Vorlage LibDriver HMC5883L IIC.
 
-/test enthält den Testcode des LibDriver HMC5883L-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen。
+/test enthält den Testcode des LibDriver HMC5883L-Treibers und dieser Code kann die erforderliche Funktion des Chips einfach testen.
 
 /example enthält LibDriver HMC5883L-Beispielcode.
 
 /doc enthält das LibDriver HMC5883L-Offlinedokument.
 
-/Datenblatt enthält HMC5883L-Datenblatt。
+/Datenblatt enthält HMC5883L-Datenblatt.
 
 /project enthält den allgemeinen Beispielcode für Linux- und MCU-Entwicklungsboards. Alle Projekte verwenden das Shell-Skript, um den Treiber zu debuggen, und die detaillierten Anweisungen finden Sie in der README.md jedes Projekts.
 
