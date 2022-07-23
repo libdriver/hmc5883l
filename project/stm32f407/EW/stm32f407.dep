@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>5</fileVersion>
+    <fileChecksum>4225673763</fileChecksum>
+    <configuration>
+        <name>Release</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\..\..\test\driver_hmc5883l_register_test.c</file>
+            <file>$PROJ_DIR$\..\..\..\example\driver_hmc5883l_basic.c</file>
+            <file>$PROJ_DIR$\..\..\..\example\driver_hmc5883l_shot.c</file>
+            <file>$PROJ_DIR$\..\driver\src\stm32f407_driver_hmc5883l_interface.c</file>
+            <file>$PROJ_DIR$\..\..\..\test\driver_hmc5883l_read_test.c</file>
+            <file>$PROJ_DIR$\..\..\..\src\driver_hmc5883l.c</file>
+            <file>$PROJ_DIR$\..\interface\src\delay.c</file>
+            <file>$PROJ_DIR$\..\interface\src\iic.c</file>
+            <file>$PROJ_DIR$\..\interface\src\clock.c</file>
+            <file>$PROJ_DIR$\..\interface\src\uart.c</file>
+        </outputs>
+        <forcedrebuild>
+            <name>[REBUILD_ALL]</name>
+        </forcedrebuild>
+    </configuration>
+</project>
