@@ -50,6 +50,8 @@ Fügen Sie /src, /interface und /example zu Ihrem Projekt hinzu.
 #### example write
 
 ```C
+#include "driver_hmc5883l_basic.h"
+
 uint8_t res;
 uint8_t i;
 float m_gauss[3];
@@ -91,6 +93,8 @@ return 0;
 #### example shot
 
 ```c
+#include "driver_hmc5883l_shot.h"
+
 uint8_t res;
 uint8_t i;
 float m_gauss[3];

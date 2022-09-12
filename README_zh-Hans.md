@@ -51,6 +51,8 @@ LibDriver HMC5883L是LibDriver推出的HMC5883L的全功能驱动，该驱动提
 #### example basic
 
 ```C
+#include "driver_hmc5883l_basic.h"
+
 uint8_t res;
 uint8_t i;
 float m_gauss[3];
@@ -92,6 +94,8 @@ return 0;
 #### example shot
 
 ```C
+#include "driver_hmc5883l_shot.h"
+
 uint8_t res;
 uint8_t i;
 float m_gauss[3];
