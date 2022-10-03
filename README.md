@@ -28,15 +28,15 @@ LibDriver HMC5883L is the full function driver of HMC5883L launched by LibDriver
 
 /src includes LibDriver HMC5883L source files.
 
-/interface includes LibDriver HMC5883L IIC platform independent template。
+/interface includes LibDriver HMC5883L IIC platform independent template.
 
-/test includes LibDriver HMC5883L driver test code and this code can test the chip necessary function simply。
+/test includes LibDriver HMC5883L driver test code and this code can test the chip necessary function simply.
 
 /example includes LibDriver HMC5883L sample code.
 
 /doc includes LibDriver HMC5883L offline document.
 
-/datasheet includes HMC5883L datasheet。
+/datasheet includes HMC5883L datasheet.
 
 /project includes the common Linux and MCU development board sample code. All projects use the shell script to debug the driver and the detail instruction can be found in each project's README.md.
 
@@ -51,6 +51,8 @@ Add /src, /interface and /example to your project.
 #### example basic
 
 ```C
+#include "driver_hmc5883l_basic.h"
+
 uint8_t res;
 uint8_t i;
 float m_gauss[3];
@@ -92,6 +94,8 @@ return 0;
 #### example shot
 
 ```C
+#include "driver_hmc5883l_shot.h"
+
 uint8_t res;
 uint8_t i;
 float m_gauss[3];
