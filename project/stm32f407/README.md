@@ -2,51 +2,85 @@
 
 #### 1.1 Chip Info
 
-chip name : STM32F407ZGT6.
+Chip Name: STM32F407ZGT6.
 
-extern oscillator : 8MHz.
+Extern Oscillator: 8MHz.
 
-uart pin: TX/RX PA9/PA10.
+UART Pin: TX/RX PA9/PA10.
 
-iic pin: SCL/SDA PB8/PB9.
+IIC Pin: SCL/SDA PB8/PB9.
 
-### 2. Shell
+### 2. Development and Debugging
 
-#### 2.1 Shell Parameter
+#### 2.1 Integrated Development Environment
 
-baud rate: 115200.
+LidDriver provides both Keil and IAR integrated development environment projects.
 
-data bits : 8.
+MDK is the Keil ARM project and your Keil version must be 5 or higher.Keil ARM project needs STMicroelectronics STM32F4 Series Device Family Pack and you can download from https://www.keil.com/dd2/stmicroelectronics/stm32f407zgtx.
 
-stop bits: 1.
+EW is the IAR ARM project and your IAR version must be 9 or higher.
 
-parity: none.
+#### 2.2 Serial Port Parameter
 
-flow control: none.
+Baud Rate: 115200.
+
+Data Bits : 8.
+
+Stop Bits: 1.
+
+Parity: None.
+
+Flow Control: None.
+
+#### 2.3 Serial Port Assistant
+
+We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g. the displayed content does not divide lines), please modify the configuration of your serial port assistant or replace one that supports '\n' parsing.
 
 ### 3. HMC5883L
 
 #### 3.1 Command Instruction
 
-​          hmc5883l is a basic command which can test all hmc5883l driver function:
+1. Show hmc5883l chip and driver information.
 
-​           -i        show hmc5883l chip and driver information.
+   ```shell
+   hmc5883l (-i | --information)
+   ```
 
-​           -h       show hmc5883l help.
+2. Show hmc5883l help.
 
-​           -p       show hmc5883l pin connections of the current board.
+   ```shell
+   hmc5883l (-h | --help)
+   ```
 
-​           -t (reg | read <times>)
+3. Show hmc5883l pin connections of the current board.
 
-​           -t reg        run hmc5883l register test.
+   ```shell
+   hmc5883l (-p | --port)
+   ```
 
-​           -t read      run hmc5883l read test. times means test times.
+4. Run hmc5883l register test.
 
-​           -c (read <times>| shot <times>)
+   ```shell
+   hmc5883l (-t reg | --test=reg)
+   ```
 
-​           -c read <times>        run hmc5883l read function. times means read times.
+5. Run hmc5883l read test, times means test times.
 
-​           -c shot <times>         run hmc5883l shot function. times means read times.
+   ```shell
+   hmc5883l (-t read | --test=read) [--times=<num>]
+   ```
+
+6. Run hmc5883l read function, times means read times.
+
+   ```shell
+   hmc5883l (-e read | --example=read) [--times=<num>]
+   ```
+
+7. Run hmc5883l shot function, times means read times.
+
+   ```shell
+   hmc5883l (-e shot | --example=shot) [--times=<num>]
+   ```
 
 #### 3.2 Command Example
 
@@ -140,7 +174,7 @@ hmc5883l: finished register test.
 ```
 
 ```shell
-hmc5883l -t read 3
+hmc5883l -t read --times=3
 
 hmc5883l: chip is Honeywell HMC5883L.
 hmc5883l: manufacturer is Honeywell.
@@ -153,159 +187,163 @@ hmc5883l: max temperature is 85.0C.
 hmc5883l: min temperature is -30.0C.
 hmc5883l: start read test.
 hmc5883l: single read test.
-hmc5883l: single read x -2.4.
-hmc5883l: single read y 251.3.
-hmc5883l: single read z 245.2.
-hmc5883l: single read x -2.4.
-hmc5883l: single read y 251.3.
-hmc5883l: single read z 244.0.
-hmc5883l: single read x -3.7.
-hmc5883l: single read y 251.3.
-hmc5883l: single read z 245.2.
+hmc5883l: single read x 508.7.
+hmc5883l: single read y 464.1.
+hmc5883l: single read z -178.1.
+hmc5883l: single read x 514.8.
+hmc5883l: single read y 435.5.
+hmc5883l: single read z -175.7.
+hmc5883l: single read x 512.4.
+hmc5883l: single read y 439.2.
+hmc5883l: single read z -176.9.
 hmc5883l: continuous read test.
-hmc5883l: continuous read x -1.2.
-hmc5883l: continuous read y 247.7.
-hmc5883l: continuous read z 244.0.
-hmc5883l: continuous read x -1.2.
-hmc5883l: continuous read y 248.9.
-hmc5883l: continuous read z 244.0.
-hmc5883l: continuous read x -3.7.
-hmc5883l: continuous read y 250.1.
-hmc5883l: continuous read z 245.2.
+hmc5883l: continuous read x 512.4.
+hmc5883l: continuous read y 441.6.
+hmc5883l: continuous read z -176.9.
+hmc5883l: continuous read x 508.7.
+hmc5883l: continuous read y 441.6.
+hmc5883l: continuous read z -176.9.
+hmc5883l: continuous read x 512.4.
+hmc5883l: continuous read y 439.2.
+hmc5883l: continuous read z -175.7.
 hmc5883l: gain test.
 hmc5883l: set gain 1370.
-hmc5883l: single read x -2.2.
-hmc5883l: single read y 149.7.
-hmc5883l: single read z 147.5.
-hmc5883l: single read x -0.7.
-hmc5883l: single read y 148.2.
-hmc5883l: single read z 145.3.
-hmc5883l: single read x -0.7.
-hmc5883l: single read y 240.2.
-hmc5883l: single read z 236.5.
+hmc5883l: single read x 305.9.
+hmc5883l: single read y 262.8.
+hmc5883l: single read z -105.1.
+hmc5883l: single read x 308.1.
+hmc5883l: single read y 260.6.
+hmc5883l: single read z -105.1.
+hmc5883l: single read x 494.9.
+hmc5883l: single read y 428.5.
+hmc5883l: single read z -173.7.
 hmc5883l: set gain 1090.
-hmc5883l: single read x -1.8.
-hmc5883l: single read y 303.6.
-hmc5883l: single read z 299.0.
-hmc5883l: single read x -1.8.
-hmc5883l: single read y 302.7.
-hmc5883l: single read z 298.1.
-hmc5883l: single read x -2.8.
-hmc5883l: single read y 242.9.
-hmc5883l: single read z 238.3.
+hmc5883l: single read x 623.8.
+hmc5883l: single read y 543.7.
+hmc5883l: single read z -215.3.
+hmc5883l: single read x 627.4.
+hmc5883l: single read y 542.8.
+hmc5883l: single read z -217.1.
+hmc5883l: single read x 493.1.
+hmc5883l: single read y 426.0.
+hmc5883l: single read z -175.7.
 hmc5883l: set gain 820.
-hmc5883l: single read x -3.7.
-hmc5883l: single read y 320.9.
-hmc5883l: single read z 314.8.
-hmc5883l: single read x -3.7.
-hmc5883l: single read y 318.4.
-hmc5883l: single read z 313.5.
-hmc5883l: single read x -2.4.
-hmc5883l: single read y 248.9.
-hmc5883l: single read z 245.2.
+hmc5883l: single read x 657.6.
+hmc5883l: single read y 564.9.
+hmc5883l: single read z -229.4.
+hmc5883l: single read x 660.0.
+hmc5883l: single read y 566.1.
+hmc5883l: single read z -229.4.
+hmc5883l: single read x 514.8.
+hmc5883l: single read y 447.7.
+hmc5883l: single read z -178.1.
 hmc5883l: set gain 660.
-hmc5883l: single read x -4.6.
-hmc5883l: single read y 308.6.
-hmc5883l: single read z 304.0.
-hmc5883l: single read x -1.5.
-hmc5883l: single read y 310.1.
-hmc5883l: single read z 305.5.
-hmc5883l: single read x -1.5.
-hmc5883l: single read y 243.2.
-hmc5883l: single read z 238.6.
+hmc5883l: single read x 638.4.
+hmc5883l: single read y 550.2.
+hmc5883l: single read z -221.9.
+hmc5883l: single read x 638.4.
+hmc5883l: single read y 547.2.
+hmc5883l: single read z -223.4.
+hmc5883l: single read x 500.1.
+hmc5883l: single read y 428.6.
+hmc5883l: single read z -176.3.
 hmc5883l: set gain 440.
-hmc5883l: single read x -2.3.
-hmc5883l: single read y 360.9.
-hmc5883l: single read z 356.4.
-hmc5883l: single read x 0.0.
-hmc5883l: single read y 360.9.
-hmc5883l: single read z 358.7.
-hmc5883l: single read x -2.3.
-hmc5883l: single read y 242.9.
-hmc5883l: single read z 240.6.
+hmc5883l: single read x 746.8.
+hmc5883l: single read y 647.0.
+hmc5883l: single read z -261.0.
+hmc5883l: single read x 746.8.
+hmc5883l: single read y 651.5.
+hmc5883l: single read z -263.3.
+hmc5883l: single read x 501.7.
+hmc5883l: single read y 435.8.
+hmc5883l: single read z -177.1.
 hmc5883l: set gain 390.
-hmc5883l: single read x -2.6.
-hmc5883l: single read y 273.9.
-hmc5883l: single read z 273.9.
-hmc5883l: single read x -2.6.
-hmc5883l: single read y 276.5.
-hmc5883l: single read z 273.9.
-hmc5883l: single read x -5.1.
-hmc5883l: single read y 248.3.
-hmc5883l: single read z 245.8.
+hmc5883l: single read x 573.4.
+hmc5883l: single read y 483.8.
+hmc5883l: single read z -194.6.
+hmc5883l: single read x 570.9.
+hmc5883l: single read y 483.8.
+hmc5883l: single read z -194.6.
+hmc5883l: single read x 501.8.
+hmc5883l: single read y 435.2.
+hmc5883l: single read z -176.6.
 hmc5883l: set gain 330.
-hmc5883l: single read x -3.0.
-hmc5883l: single read y 293.9.
-hmc5883l: single read z 290.9.
-hmc5883l: single read x -3.0.
-hmc5883l: single read y 293.9.
-hmc5883l: single read z 287.9.
-hmc5883l: single read x 0.0.
-hmc5883l: single read y 239.4.
-hmc5883l: single read z 239.4.
+hmc5883l: single read x 596.9.
+hmc5883l: single read y 518.1.
+hmc5883l: single read z -209.1.
+hmc5883l: single read x 596.9.
+hmc5883l: single read y 518.1.
+hmc5883l: single read z -209.1.
+hmc5883l: single read x 493.9.
+hmc5883l: single read y 424.2.
+hmc5883l: single read z -172.7.
 hmc5883l: set gain 230.
-hmc5883l: single read x 1.0.
-hmc5883l: single read y 343.6.
-hmc5883l: single read z 339.3.
-hmc5883l: single read x 1.0.
-hmc5883l: single read y 339.3.
-hmc5883l: single read z 343.6.
-hmc5883l: single read x 1.0.
-hmc5883l: single read y 239.2.
-hmc5883l: single read z 234.9.
-hmc5883l: finished read test.
+hmc5883l: single read x 709.0.
+hmc5883l: single read y 604.6.
+hmc5883l: single read z -247.9.
+hmc5883l: single read x 709.0.
+hmc5883l: single read y 609.0.
+hmc5883l: single read z -252.3.
+hmc5883l: single read x 495.9.
+hmc5883l: single read y 435.0.
+hmc5883l: single read z -174.0.
+hmc5883l: finished read test
 ```
 
 ```shell
-hmc5883l -c read 3
+hmc5883l -e read --times=3
 
-hmc5883l: 1/3.
-hmc5883l: x is 2.440.
-hmc5883l: y is 237.900.
-hmc5883l: z is 250.100.
-hmc5883l: 2/3.
-hmc5883l: x is 3.660.
-hmc5883l: y is 234.240.
-hmc5883l: z is 250.100.
-hmc5883l: 3/3.
-hmc5883l: x is 3.660.
-hmc5883l: y is 234.240.
-hmc5883l: z is 248.880.
+1/3
+x is 524.600.
+y is 448.960.
+z is -159.820.
+2/3
+x is 528.260.
+y is 444.080.
+z is -159.820.
+3/3
+x is 525.820.
+y is 440.420.
+z is -158.600.
 ```
 
 ```shell
-hmc5883l -c shot 3
+hmc5883l -e shot --times=3
 
-hmc5883l: 1/3.
-hmc5883l: x is 3.660.
-hmc5883l: y is 239.120.
-hmc5883l: z is 254.980.
-hmc5883l: 2/3.
-hmc5883l: x is 3.660.
-hmc5883l: y is 239.120.
-hmc5883l: z is 253.760.
-hmc5883l: 3/3.
-hmc5883l: x is 2.440.
-hmc5883l: y is 240.340.
-hmc5883l: z is 256.200.
+1/3
+x is 567.300.
+y is 423.340.
+z is -135.420.
+2/3
+x is 566.080.
+y is 420.900.
+z is -137.860.
+3/3
+x is 568.520.
+y is 422.120.
+z is -132.980.
 ```
 
 ```shell
 hmc5883l -h
 
-hmc5883l -i
-	show hmc5883l chip and driver information.
-hmc5883l -h
-	show hmc5883l help.
-hmc5883l -p
-	show hmc5883l pin connections of the current board.
-hmc5883l -t reg
-	run hmc5883l register test.
-hmc5883l -t read
-	run hmc5883l read test.times means test times.
-hmc5883l -c read <times>
-	run hmc5883l read function.times means read times.
-hmc5883l -c shot <times>
-	run hmc5883l shot function.times means read times.
+Usage:
+  hmc5883l (-i | --information)
+  hmc5883l (-h | --help)
+  hmc5883l (-p | --port)
+  hmc5883l (-t reg | --test=reg)
+  hmc5883l (-t read | --test=read) [--times=<num>]
+  hmc5883l (-e read | --example=read) [--times=<num>]
+  hmc5883l (-e shot | --example=shot) [--times=<num>]
+
+Options:
+  -e <read | shot>, --example=<read | shot>
+                                 Run the driver example.
+  -h, --help                     Show the help.
+  -i, --information              Show the chip information.
+  -p, --port                     Display the pin connections of the current board.
+  -t <reg | read>, --test=<reg | read>
+                                 Run the driver test.
+      --times=<num>              Set the running times.([default: 3])
 ```
 

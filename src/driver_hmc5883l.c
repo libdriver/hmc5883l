@@ -73,7 +73,7 @@
 
 /**
  * @brief     test the chip
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
  *            - 1 test failed
@@ -167,7 +167,7 @@ static uint8_t a_hmc5883l_test(hmc5883l_handle_t *handle)
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
  *            - 1 iic initialization failed
@@ -280,7 +280,7 @@ uint8_t hmc5883l_init(hmc5883l_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
  *            - 1 power down failed
@@ -332,7 +332,7 @@ uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
 
 /**
  * @brief     set the average sample rate
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @param[in] average_sample is the average sample rate
  * @return    status code
  *            - 0 success
@@ -370,8 +370,8 @@ uint8_t hmc5883l_set_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_
 
 /**
  * @brief      get the average sample rate
- * @param[in]  *handle points to a hmc5883l handle structure
- * @param[out] *average_sample points to a average sample rate buffer
+ * @param[in]  *handle points to an hmc5883l handle structure
+ * @param[out] *average_sample points to an average sample rate buffer
  * @return     status code
  *             - 0 success
  *             - 1 get average sample failed
@@ -407,7 +407,7 @@ uint8_t hmc5883l_get_average_sample(hmc5883l_handle_t *handle, hmc5883l_average_
 
 /**
  * @brief     set the data output rate
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @param[in] data_rate is the data output rate
  * @return    status code
  *            - 0 success
@@ -445,7 +445,7 @@ uint8_t hmc5883l_set_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_o
 
 /**
  * @brief      get the data output rate
- * @param[in]  *handle points to a hmc5883l handle structure
+ * @param[in]  *handle points to an hmc5883l handle structure
  * @param[out] *data_rate points to a data output rate buffer
  * @return     status code
  *             - 0 success
@@ -482,7 +482,7 @@ uint8_t hmc5883l_get_data_output_rate(hmc5883l_handle_t *handle, hmc5883l_data_o
 
 /**
  * @brief     set the chip mode
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @param[in] mode is the chip mode
  * @return    status code
  *            - 0 success
@@ -520,7 +520,7 @@ uint8_t hmc5883l_set_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t mode)
 
 /**
  * @brief      get the chip mode
- * @param[in]  *handle points to a hmc5883l handle structure
+ * @param[in]  *handle points to an hmc5883l handle structure
  * @param[out] *mode points to a chip mode buffer
  * @return     status code
  *             - 0 success
@@ -557,7 +557,7 @@ uint8_t hmc5883l_get_mode(hmc5883l_handle_t *handle, hmc5883l_mode_t *mode)
 
 /**
  * @brief     set the chip gain
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @param[in] gain is the chip gain
  * @return    status code
  *            - 0 success
@@ -595,7 +595,7 @@ uint8_t hmc5883l_set_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t gain)
 
 /**
  * @brief      get the chip gain
- * @param[in]  *handle points to a hmc5883l handle structure
+ * @param[in]  *handle points to an hmc5883l handle structure
  * @param[out] *gain points to a chip gain buffer
  * @return     status code
  *             - 0 success
@@ -632,7 +632,7 @@ uint8_t hmc5883l_get_gain(hmc5883l_handle_t *handle, hmc5883l_gain_t *gain)
 
 /**
  * @brief     enable the high speed iic
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
  *            - 1 enable high speed iic failed
@@ -668,7 +668,7 @@ uint8_t hmc5883l_enable_high_speed_iic(hmc5883l_handle_t *handle)
 
 /**
  * @brief     disable the high speed iic
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
  *            - 1 disable high speed iic failed
@@ -704,7 +704,7 @@ uint8_t hmc5883l_disable_high_speed_iic(hmc5883l_handle_t *handle)
 
 /**
  * @brief      read data once
- * @param[in]  *handle points to a hmc5883l handle structure
+ * @param[in]  *handle points to an hmc5883l handle structure
  * @param[out] *raw points to a raw data buffer
  * @param[out] *m_gauss points to a converted data buffer
  * @return     status code
@@ -853,7 +853,7 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
 
 /**
  * @brief     start reading data
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
  *            - 1 start continuous read failed
@@ -889,7 +889,7 @@ uint8_t hmc5883l_start_continuous_read(hmc5883l_handle_t *handle)
 
 /**
  * @brief     stop reading data
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
  *            - 1 stop continuous read failed
@@ -926,7 +926,7 @@ uint8_t hmc5883l_stop_continuous_read(hmc5883l_handle_t *handle)
 
 /**
  * @brief      read data continuously
- * @param[in]  *handle points to a hmc5883l handle structure
+ * @param[in]  *handle points to an hmc5883l handle structure
  * @param[out] *raw points to a raw data buffer
  * @param[out] *m_gauss points to a converted data buffer
  * @return     status code
@@ -1058,7 +1058,7 @@ uint8_t hmc5883l_continuous_read(hmc5883l_handle_t *handle, int16_t raw[3], floa
 
 /**
  * @brief     set the chip register
- * @param[in] *handle points to a hmc5883l handle structure
+ * @param[in] *handle points to an hmc5883l handle structure
  * @param[in] reg is the iic register address
  * @param[in] *buf points to a data buffer
  * @param[in] len is the data buffer length
@@ -1085,7 +1085,7 @@ uint8_t hmc5883l_set_reg(hmc5883l_handle_t *handle, uint8_t reg, uint8_t *buf, u
 
 /**
  * @brief      get the chip register
- * @param[in]  *handle points to a hmc5883l handle structure
+ * @param[in]  *handle points to an hmc5883l handle structure
  * @param[in]  reg is the iic register address
  * @param[out] *buf points to a data buffer
  * @param[in]  len is the data buffer length
@@ -1112,7 +1112,7 @@ uint8_t hmc5883l_get_reg(hmc5883l_handle_t *handle, uint8_t reg, uint8_t *buf, u
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a hmc5883l info structure
+ * @param[out] *info points to an hmc5883l info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL

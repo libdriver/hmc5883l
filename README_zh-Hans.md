@@ -135,13 +135,13 @@ return 0;
 
 ### 文档
 
-在线文档: https://www.libdriver.com/docs/hmc5883l/index.html
+在线文档: [https://www.libdriver.com/docs/hmc5883l/index.html](https://www.libdriver.com/docs/hmc5883l/index.html)。
 
-离线文档: /doc/html/index.html
+离线文档: /doc/html/index.html。
 
 ### 贡献
 
-请联系lishifenging@outlook.com
+请参考CONTRIBUTING.md。
 
 ### 版权
 
@@ -157,4 +157,4 @@ MIT 许可证（MIT）
 
 ### 联系我们
 
-请联系lishifenging@outlook.com
+请联系lishifenging@outlook.com。

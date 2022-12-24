@@ -78,7 +78,7 @@ uint8_t hmc5883l_read_test(uint32_t times)
         hmc5883l_interface_debug_print("hmc5883l: chip is %s.\n", info.chip_name);
         hmc5883l_interface_debug_print("hmc5883l: manufacturer is %s.\n", info.manufacturer_name);
         hmc5883l_interface_debug_print("hmc5883l: interface is %s.\n", info.interface);
-        hmc5883l_interface_debug_print("hmc5883l: driver version is %d.%d.\n", info.driver_version/1000, (info.driver_version%1000)/100);
+        hmc5883l_interface_debug_print("hmc5883l: driver version is %d.%d.\n", info.driver_version / 1000, (info.driver_version % 1000) / 100);
         hmc5883l_interface_debug_print("hmc5883l: min supply voltage is %0.1fV.\n", info.supply_voltage_min_v);
         hmc5883l_interface_debug_print("hmc5883l: max supply voltage is %0.1fV.\n", info.supply_voltage_max_v);
         hmc5883l_interface_debug_print("hmc5883l: max current is %0.2fmA.\n", info.max_current_ma);
