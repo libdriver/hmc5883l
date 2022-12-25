@@ -64,19 +64,19 @@ We use '\n' to wrap lines.If your serial port assistant displays exceptions (e.g
    hmc5883l (-t reg | --test=reg)
    ```
 
-5. Run hmc5883l read test, times means test times.
+5. Run hmc5883l read test, num means test times.
 
    ```shell
    hmc5883l (-t read | --test=read) [--times=<num>]
    ```
 
-6. Run hmc5883l read function, times means read times.
+6. Run hmc5883l read function, num means read times.
 
    ```shell
    hmc5883l (-e read | --example=read) [--times=<num>]
    ```
 
-7. Run hmc5883l shot function, times means read times.
+7. Run hmc5883l shot function, num means read times.
 
    ```shell
    hmc5883l (-e shot | --example=shot) [--times=<num>]
