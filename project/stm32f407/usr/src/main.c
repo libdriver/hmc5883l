@@ -76,7 +76,7 @@ uint8_t hmc5883l(uint8_t argc, char **argv)
         {"times", required_argument, NULL, 1},
         {NULL, 0, NULL, 0},
     };
-    char type[33] = "unknow";
+    char type[33] = "unknown";
     uint32_t times = 3;
     
     /* if no params */
@@ -349,7 +349,7 @@ int main(void)
     /* uart init */
     uart_init(115200);
     
-    /* shell init && register hmc5883l fuction */
+    /* shell init && register hmc5883l function */
     shell_init();
     shell_register("hmc5883l", hmc5883l);
     uart_print("hmc5883l: welcome to libdriver hmc5883l.\n");
@@ -372,7 +372,7 @@ int main(void)
             }
             else if (res == 2)
             {
-                uart_print("hmc5883l: unknow command.\n");
+                uart_print("hmc5883l: unknown command.\n");
             }
             else if (res == 3)
             {
@@ -388,7 +388,7 @@ int main(void)
             }
             else
             {
-                uart_print("hmc5883l: unknow status code.\n");
+                uart_print("hmc5883l: unknown status code.\n");
             }
             uart_flush();
         }

@@ -116,7 +116,7 @@ static uint8_t a_hmc5883l_test(hmc5883l_handle_t *handle)
         {
             handle->debug_print("hmc5883l: read failed.\n");                                /* read status failed */
             
-            return 1;                                                                       /* return errror */
+            return 1;                                                                       /* return error */
         }
         status = status & 0x01;                                                             /* get status bit */
         if (status == 0)                                                                    /* check status */
@@ -650,7 +650,7 @@ uint8_t hmc5883l_enable_high_speed_iic(hmc5883l_handle_t *handle)
     }
     if (handle->inited != 1)                                                                 /* check handle initialization */
     {
-        return 3;                                                                            /* return eror */
+        return 3;                                                                            /* return error */
     }
     
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);          /* read mode config */
@@ -692,7 +692,7 @@ uint8_t hmc5883l_disable_high_speed_iic(hmc5883l_handle_t *handle)
     res = handle->iic_read(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);          /* read mode config */
     if (res != 0)                                                                            /* check result */
     {
-        handle->debug_print("hmc5883l: read failed.\n");                                     /* read mode faild */
+        handle->debug_print("hmc5883l: read failed.\n");                                     /* read mode failed */
         
         return 1;                                                                            /* return error */
     }
@@ -740,7 +740,7 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
     prev &= ~(0x7C);                                                                              /* clear mode bits */
     prev &= ~(0x03);                                                                              /* clear config */
     prev |= 0x01;                                                                                 /* set config */
-    res = handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);              /* write mode regsiter */
+    res = handle->iic_write(HMC5883_ADDRESS, HMC5883_REG_MODE, (uint8_t *)&prev, 1);              /* write mode register */
     if (res != 0)                                                                                 /* check result */
     {
         handle->debug_print("hmc5883l: write failed.\n");                                         /* write mode failed */
@@ -805,7 +805,7 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
             
             break;                                                                                /* break */
         }
-        default :                                                                                 /* unknow code */
+        default :                                                                                 /* unknown code */
         {
             resolution = 0.00f;                                                                   /* set resolution 0.00 */
             
@@ -1010,7 +1010,7 @@ uint8_t hmc5883l_continuous_read(hmc5883l_handle_t *handle, int16_t raw[3], floa
             
             break;                                                                                 /* break */
         }
-        default :                                                                                  /* unknow code */
+        default :                                                                                  /* unknown code */
         {
             resolution = 0.00f;                                                                    /* set resolution 0.00 */
             
@@ -1134,7 +1134,7 @@ uint8_t hmc5883l_info(hmc5883l_info_t *info)
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
     info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
     info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
-    info->driver_version = DRIVER_VERSION;                          /* set driver verison */
+    info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
 }
