@@ -1,6 +1,6 @@
 /**
  * @mainpage  LibDriver HMC5883L
- * @brief     libdriver hmc5883l is a full function driver of hmc5883l and it can run in both MCU and Linux platform.
+ * @brief     LibDriver HMC5883L is a full function driver of HMC5883L and it can run in both MCU and Linux platform.
  * @version   2.0.0
  * @author    Shifeng Li
  *
