@@ -574,8 +574,8 @@ uint8_t hmc5883l_register_test(void)
     }
     hmc5883l_interface_debug_print("hmc5883l: check disable high speed iic %s.\n", res==0?"ok":"error");
     
-    /* finished register test */
-    hmc5883l_interface_debug_print("hmc5883l: finished register test.\n");
+    /* finish register test */
+    hmc5883l_interface_debug_print("hmc5883l: finish register test.\n");
     (void)hmc5883l_deinit(&gs_handle);
     
     return 0;

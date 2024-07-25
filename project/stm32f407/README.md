@@ -170,7 +170,7 @@ hmc5883l: hmc5883l_enable_high_speed_iic.
 hmc5883l: check enable high speed iic ok.
 hmc5883l: hmc5883l_disable_high_speed_iic.
 hmc5883l: check disable high speed iic ok.
-hmc5883l: finished register test.
+hmc5883l: finish register test.
 ```
 
 ```shell
@@ -287,7 +287,7 @@ hmc5883l: single read z -252.3.
 hmc5883l: single read x 495.9.
 hmc5883l: single read y 435.0.
 hmc5883l: single read z -174.0.
-hmc5883l: finished read test
+hmc5883l: finish read test
 ```
 
 ```shell
