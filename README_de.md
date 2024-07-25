@@ -16,7 +16,7 @@ LibDriver HMC5883L ist der Treiber mit vollem Funktionsumfang von HMC5883L, der 
   - [Anweisung](#Anweisung)
   - [Installieren](#Installieren)
   - [Nutzung](#Nutzung)
-    - [example write](#example-write)
+    - [example basic](#example-basic)
     - [example shot](#example-shot)
   - [Dokument](#Dokument)
   - [Beitrag](#Beitrag)
@@ -51,7 +51,7 @@ Fügen Sie das Verzeichnis /src, den Schnittstellentreiber für Ihre Plattform u
 
 Sie können auf die Beispiele im Verzeichnis /example zurückgreifen, um Ihren eigenen Treiber zu vervollständigen. Wenn Sie die Standardprogrammierbeispiele verwenden möchten, erfahren Sie hier, wie Sie diese verwenden.
 
-#### example write
+#### example basic
 
 ```C
 #include "driver_hmc5883l_basic.h"

@@ -1,10 +1,10 @@
 var NAVTREEINDEX1 =
 {
+"group__hmc5883l__test__driver.html#ga3492319831a252fd8f9bf83bc242ded9":[0,0,5,0],
 "group__hmc5883l__test__driver.html#ga3492319831a252fd8f9bf83bc242ded9":[2,0,4,0,0],
-"group__hmc5883l__test__driver.html#ga3492319831a252fd8f9bf83bc242ded9":[2,0,4,1,0],
-"group__hmc5883l__test__driver.html#gad2aa56093ed0206e5b8beb0f3098447b":[2,0,4,2,0],
-"group__hmc5883l__test__driver.html#gad2aa56093ed0206e5b8beb0f3098447b":[0,0,5,1],
 "group__hmc5883l__test__driver.html#gad2aa56093ed0206e5b8beb0f3098447b":[2,0,4,3,0],
+"group__hmc5883l__test__driver.html#gad2aa56093ed0206e5b8beb0f3098447b":[0,0,5,1],
+"group__hmc5883l__test__driver.html#gad2aa56093ed0206e5b8beb0f3098447b":[2,0,4,2,0],
 "index.html":[],
 "mainpage_8h.html":[2,0,0,0,0],
 "mainpage_8h_source.html":[2,0,0,0,0],

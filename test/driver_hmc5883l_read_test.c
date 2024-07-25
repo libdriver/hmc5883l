@@ -466,7 +466,7 @@ uint8_t hmc5883l_read_test(uint32_t times)
     }
 
     /* finish read test */
-    hmc5883l_interface_debug_print("hmc5883l: finished read test.\n");
+    hmc5883l_interface_debug_print("hmc5883l: finish read test.\n");
     (void)hmc5883l_deinit(&gs_handle);
     
     return 0;

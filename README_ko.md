@@ -17,7 +17,7 @@ LibDriver HMC5883L은 LibDriver에서 출시한 HMC5883L의 전체 기능 드라
   - [설명](#설명)
   - [설치](#설치)
   - [사용](#사용)
-    - [example write](#example-write)
+    - [example basic](#example-basic)
     - [example shot](#example-shot)
   - [문서](#문서)
   - [기고](#기고)
@@ -52,7 +52,7 @@ LibDriver HMC5883L은 LibDriver에서 출시한 HMC5883L의 전체 기능 드라
 
 /example 디렉터리의 예제를 참조하여 자신만의 드라이버를 완성할 수 있습니다. 기본 프로그래밍 예제를 사용하려는 경우 사용 방법은 다음과 같습니다.
 
-#### example write
+#### example basic
 
 ```C
 #include "driver_hmc5883l_basic.h"
