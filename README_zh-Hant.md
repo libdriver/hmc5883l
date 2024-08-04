@@ -8,7 +8,7 @@
 
 [![MISRA](https://img.shields.io/badge/misra-compliant-brightgreen.svg)](/misra/README.md) [![API](https://img.shields.io/badge/api-reference-blue.svg)](https://www.libdriver.com/docs/hmc5883l/index.html) [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](/LICENSE)
 
-霍尼韋爾HMC5883L是一種設計用於低磁場感應的表面貼裝芯片模塊。它帶有數字接口，用於低成本羅盤和磁強計等應用。 HMC5883L使用了最先進的高分辨率HMC118X系列磁阻傳感器，該傳感器包含放大、自動消磁、偏移消除，支持1° 到2° 羅盤航向精度12位ADC等特性。 HMC5883L是一種3.0x3.0x0.9mm表面安裝16針無鉛芯片載體（LCC）。 HMC5883L的應用包括移動電話、上網本、消費電子產品、自動導航系統和個人導航設備。
+霍尼韋爾HMC5883L是一種設計用於低磁場感應的表面貼裝晶片模塊。 它帶有數位介面，用於低成本羅盤和磁力計等應用。 HMC5883L使用了最先進的高解析度HMC118X系列磁阻感測器，該感測器包含放大、自動消磁、偏移消除，支持1°到2°羅盤航向精度12比特ADC等特性。 HMC5883L是一種3.0x3.0x0.9mm表面封裝16針無鉛晶片載體（LCC）。 HMC5883L的應用包括行动电话、上網本、消費電子產品、自動導航系統和個人導航設備。
 
 LibDriver HMC5883L是LibDriver推出的HMC5883L的全功能驅動，該驅動提供連續模式磁場強度讀取、單次模式磁場讀取等功能並且它符合MISRA標準。
 
