@@ -408,9 +408,9 @@ Functions</h2></td></tr>
 <p>read data continuously </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*raw</td><td>points to a raw data buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*m_gauss</td><td>points to a converted data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*raw</td><td>pointer to a raw data buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*m_gauss</td><td>pointer to a converted data buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -446,7 +446,7 @@ Functions</h2></td></tr>
 <p>close the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -483,7 +483,7 @@ Functions</h2></td></tr>
 <p>disable the high speed iic </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -519,7 +519,7 @@ Functions</h2></td></tr>
 <p>enable the high speed iic </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -565,8 +565,8 @@ Functions</h2></td></tr>
 <p>get the average sample rate </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*average_sample</td><td>points to an average sample rate buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*average_sample</td><td>pointer to an average sample rate buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -612,8 +612,8 @@ Functions</h2></td></tr>
 <p>get the data output rate </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*data_rate</td><td>points to a data output rate buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*data_rate</td><td>pointer to a data output rate buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -659,8 +659,8 @@ Functions</h2></td></tr>
 <p>get the chip gain </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*gain</td><td>points to a chip gain buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*gain</td><td>pointer to a chip gain buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -706,8 +706,8 @@ Functions</h2></td></tr>
 <p>get the chip mode </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*mode</td><td>points to a chip mode buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*mode</td><td>pointer to a chip mode buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -743,7 +743,7 @@ Functions</h2></td></tr>
 <p>get chip's information </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>points to an hmc5883l info structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*info</td><td>pointer to an hmc5883l info structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -777,7 +777,7 @@ Functions</h2></td></tr>
 <p>initialize the chip </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -823,8 +823,8 @@ Functions</h2></td></tr>
 <p>set the average sample rate </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">average_sample</td><td>is the average sample rate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">average_sample</td><td>average sample rate </td></tr>
   </table>
   </dd>
 </dl>
@@ -870,8 +870,8 @@ Functions</h2></td></tr>
 <p>set the data output rate </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">data_rate</td><td>is the data output rate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">data_rate</td><td>data output rate </td></tr>
   </table>
   </dd>
 </dl>
@@ -917,8 +917,8 @@ Functions</h2></td></tr>
 <p>set the chip gain </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>is the chip gain </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain</td><td>chip gain </td></tr>
   </table>
   </dd>
 </dl>
@@ -964,8 +964,8 @@ Functions</h2></td></tr>
 <p>set the chip mode </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>is the chip mode </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>chip mode </td></tr>
   </table>
   </dd>
 </dl>
@@ -1017,9 +1017,9 @@ Functions</h2></td></tr>
 <p>read data once </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*raw</td><td>points to a raw data buffer </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">*m_gauss</td><td>points to a converted data buffer </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*raw</td><td>pointer to a raw data buffer </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">*m_gauss</td><td>pointer to a converted data buffer </td></tr>
   </table>
   </dd>
 </dl>
@@ -1055,7 +1055,7 @@ Functions</h2></td></tr>
 <p>start reading data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
   </table>
   </dd>
 </dl>
@@ -1091,7 +1091,7 @@ Functions</h2></td></tr>
 <p>stop reading data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>points to an hmc5883l handle structure </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">*handle</td><td>pointer to an hmc5883l handle structure </td></tr>
   </table>
   </dd>
 </dl>

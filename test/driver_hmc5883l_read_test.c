@@ -41,7 +41,7 @@ static hmc5883l_handle_t gs_handle;        /**< hmc5883l handle */
 
 /**
  * @brief     read test
- * @param[in] times is the test times
+ * @param[in] times test times
  * @return    status code
  *            - 0 success
  *            - 1 test failed

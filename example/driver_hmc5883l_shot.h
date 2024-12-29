@@ -77,7 +77,7 @@ uint8_t hmc5883l_shot_deinit(void);
 
 /**
  * @brief      shot example read
- * @param[out] *m_gauss points to a converted data buffer
+ * @param[out] *m_gauss pointer to a converted data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
