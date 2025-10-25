@@ -283,10 +283,10 @@ uint8_t hmc5883l_init(hmc5883l_handle_t *handle)
  * @param[in] *handle pointer to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
- *            - 1 power down failed
- *            - 2 iic deinit failed
- *            - 3 handle is NULL
- *            - 4 handle is not initialized
+ *            - 1 iic deinit failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
+ *            - 4 power down failed
  * @note      none
  */
 uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
@@ -307,7 +307,7 @@ uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
     {
         handle->debug_print("hmc5883l: read failed.\n");                                    /* read mode reg */
         
-        return 1;                                                                           /* return error */
+        return 4;                                                                           /* return error */
     }
     prev &= ~(0x7C);                                                                        /* clear mode */
     prev &= ~(0x03);                                                                        /* clear config */
@@ -317,13 +317,13 @@ uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle)
     {
         handle->debug_print("hmc5883l: write failed.\n");                                   /* write mode failed */
         
-        return 1;                                                                           /* return error */
+        return 4;                                                                           /* return error */
     }    
     if (handle->iic_deinit() != 0)                                                          /* iic deinit */
     {
         handle->debug_print("hmc5883l: iic deinit failed.\n");                              /* return error */
         
-        return 2;                                                                           /* iic deinit failed */
+        return 1;                                                                           /* iic deinit failed */
     }   
     handle->inited = 0;                                                                     /* flag close */
     

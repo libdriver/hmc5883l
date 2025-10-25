@@ -242,10 +242,10 @@ uint8_t hmc5883l_init(hmc5883l_handle_t *handle);
  * @param[in] *handle pointer to an hmc5883l handle structure
  * @return    status code
  *            - 0 success
- *            - 1 power down failed
- *            - 2 iic deinit failed
- *            - 3 handle is NULL
- *            - 4 handle is not initialized
+ *            - 1 iic deinit failed
+ *            - 2 handle is NULL
+ *            - 3 handle is not initialized
+ *            - 4 power down failed
  * @note      none
  */
 uint8_t hmc5883l_deinit(hmc5883l_handle_t *handle);

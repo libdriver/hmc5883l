@@ -50,7 +50,7 @@ static hmc5883l_handle_t gs_handle;        /**< hmc5883l handle */
 uint8_t hmc5883l_read_test(uint32_t times)
 {
     uint8_t res; 
-    uint8_t i;
+    uint32_t i;
     int16_t raw[3];
     float m_gauss[3];
     hmc5883l_info_t info;
