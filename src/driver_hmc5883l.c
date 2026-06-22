@@ -141,21 +141,21 @@ static uint8_t a_hmc5883l_test(hmc5883l_handle_t *handle)
         return 1;                                                                           /* return error */
     }
     data = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);                                     /* get x data */
-    if ((data <= 243) || (data > 575))                                                      /* check x data */
+    if ((data < 243) || (data > 575))                                                       /* check x data */
     {
         handle->debug_print("hmc5883l: x check failed.\n");                                 /* x data check failed */
         
         return 1;                                                                           /* return error */
     }
     data = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                     /* get y data */
-    if ((data <= 243) || (data > 575))                                                      /* check y data */
+    if ((data < 243) || (data > 575))                                                       /* check y data */
     {
         handle->debug_print("hmc5883l: y check failed.\n");                                 /* y data check failed */
         
         return 1;                                                                           /* return error */
     }
     data = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                     /* get z data */
-    if ((data <= 243) || (data > 575))                                                      /* check z data */
+    if ((data < 243) || (data > 575))                                                       /* check z data */
     {
         handle->debug_print("hmc5883l: z check failed.\n");                                 /* z data check failed */
         
@@ -842,8 +842,8 @@ uint8_t hmc5883l_single_read(hmc5883l_handle_t *handle, int16_t raw[3], float m_
         return 1;                                                                                 /* return error */
     }
     raw[0] = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);                                         /* get x raw */
-    raw[1] = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                         /* get y raw */
-    raw[2] = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                         /* get z raw */
+    raw[2] = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                         /* get y raw */
+    raw[1] = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                         /* get z raw */
     m_gauss[0] = (float)(raw[0]) * resolution;                                                    /* calculate x */
     m_gauss[1] = (float)(raw[1]) * resolution;                                                    /* calculate y */
     m_gauss[2] = (float)(raw[2]) * resolution;                                                    /* calculate z */
@@ -1047,8 +1047,8 @@ uint8_t hmc5883l_continuous_read(hmc5883l_handle_t *handle, int16_t raw[3], floa
         return 1;                                                                                  /* return error */
     }
     raw[0] = (int16_t)(((uint16_t)buf[0] << 8) | buf[1]);                                          /* get x raw */
-    raw[1] = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                          /* get y raw */
-    raw[2] = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                          /* get z raw */
+    raw[2] = (int16_t)(((uint16_t)buf[2] << 8) | buf[3]);                                          /* get y raw */
+    raw[1] = (int16_t)(((uint16_t)buf[4] << 8) | buf[5]);                                          /* get z raw */
     m_gauss[0] = (float)(raw[0]) * resolution;                                                     /* calculate x */
     m_gauss[1] = (float)(raw[1]) * resolution;                                                     /* calculate y */
     m_gauss[2] = (float)(raw[2]) * resolution;                                                     /* calculate z */
