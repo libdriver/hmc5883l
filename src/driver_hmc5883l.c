@@ -161,6 +161,27 @@ static uint8_t a_hmc5883l_test(hmc5883l_handle_t *handle)
         
         return 1;                                                                           /* return error */
     }
+    reg = 0x10;                                                                             /* exit self test */
+    if (handle->iic_write(HMC5883L_ADDRESS, HMC5883L_REG_CRA, (uint8_t *)&reg, 1) != 0)     /* write cra reg */
+    {
+        handle->debug_print("hmc5883l: write failed.\n");                                   /* write cra failed */
+      
+        return 1;                                                                           /* return error */
+    }
+    reg = 0x20;                                                                             /* restore crb 0x20 */
+    if (handle->iic_write(HMC5883L_ADDRESS, HMC5883L_REG_CRB, (uint8_t *)&reg, 1) != 0)     /* write crb reg */
+    {
+        handle->debug_print("hmc5883l: write failed.\n");                                   /* write crb failed */
+        
+        return 1;                                                                           /* return error */
+    }
+    reg = 0x01;                                                                             /* restore mode 0x01 */
+    if (handle->iic_write(HMC5883L_ADDRESS, HMC5883L_REG_MODE, (uint8_t *)&reg, 1) != 0)    /* write mode reg */
+    {
+        handle->debug_print("hmc5883l: write failed.\n");                                   /* write mode failed */
+        
+        return 1;                                                                           /* return error */
+    }
     
     return 0;                                                                               /* success return 0 */
 }
